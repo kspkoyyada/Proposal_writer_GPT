@@ -1,18 +1,14 @@
 import streamlit as st
-
-
 import os
-import openai
-from dotenv import load_dotenv, find_dotenv
-_ = load_dotenv(find_dotenv()) # read local .env file
-
+#import openai
+#from dotenv import load_dotenv, find_dotenv
+#_ = load_dotenv(find_dotenv()) # read local .env file
 #openai.api_key  = os.environ['OPENAI_API_KEY']
-#OPENAI_API_KEY  = os.getenv('OPENAI_API_KEY')
 #import streamlit as st
 import openai 
 from openai import OpenAI
 
-print(openai.VERSION)
+#print(openai.VERSION)
 #st.title("ChatGPT-like clone")
 st.set_page_config(page_title="🦜🔗 ChatGPT-like Proposal Writer")
 st.title('🦜🔗 ChatGPT-like Proposal Writer')
@@ -25,11 +21,6 @@ openai_api_key = st.sidebar.text_input('Enter OpenAI API Key')
 temp1 = st.sidebar.slider("Enter tempeature lower the value less creativity",min_value=0.0,max_value=2.0)
 st.write(temp1)
 #text_input('Enter temperature')
-
-def generate_response(input_text):
-  llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
-  st.info(llm(input_text))
-
 
 # Set OpenAI API key from Streamlit secrets
 #client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
