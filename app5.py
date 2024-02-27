@@ -10,8 +10,8 @@ from openai import OpenAI
 
 #print(openai.VERSION)
 #st.title("ChatGPT-like clone")
-st.set_page_config(page_title="🦜🔗 ChatGPT-like Proposal Writer")
-st.title('🦜🔗 ChatGPT-like Proposal Writer')
+st.set_page_config(page_title="🦜🔗 Proposal Gen Writer")
+st.title('🦜🔗 Proposal Gen Writer')
 
 openai_api_key = st.sidebar.text_input('Enter OpenAI API Key')
 
