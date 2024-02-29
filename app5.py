@@ -10,9 +10,30 @@ from openai import OpenAI
 
 #print(openai.VERSION)
 #st.title("ChatGPT-like clone")
-st.set_page_config(page_title="🦜🔗 Proposal Gen")
-st.title('🦜🔗 Proposal Gen')
-
+st.set_page_config(page_title="🦜🔗 Proposal Gen ")
+st.title('🦜🔗 Proposal Gen ')
+def set_bg_hack_url():
+    '''
+    A function to unpack an image from url and set as bg.
+    Returns
+    -------
+    The background.
+    '''
+        
+    st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background: url("https://cdn.wallpapersafari.com/62/70/vmSyDZ.jpg");
+             https://cdn.pixabay.com/photo/2020/06/19/22/33/wormhole-5319067_960_720.jpg
+             #https://i.ytimg.com/vi/kyWiZlrS9mA/maxresdefault.jpg
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
+set_bg_hack_url()
 openai_api_key = st.sidebar.text_input('Enter OpenAI API Key')
 
 #context1 = st.sidebar.text_area('Enter context')
@@ -25,7 +46,7 @@ st.write(temp1)
 # Set OpenAI API key from Streamlit secrets
 #client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 client = OpenAI(api_key=openai_api_key)
-st.write("Hi")
+st.write("Hi, I am your proposal writing Assistant")
 
 # Set a default model
 if "openai_model" not in st.session_state:
@@ -51,16 +72,16 @@ with detailed elobation based on the inputs given, You may ask other question th
 to write proposl for the given problem statement \
 As your are an expert in proposal writing you also have the knowledge of business domain understanding""" )
 
-
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-        st.write("Hi")
+        st.write("Hi, I am your proposal writing Assistant")
 
 # Accept user input
 if prompt := st.chat_input("What is up?"):
     # Add user message to chat history
+    
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
     with st.chat_message("user"):
@@ -70,7 +91,7 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("assistant"):
         stream = client.chat.completions.create(
             model=st.session_state["openai_model"],
-            messages=[
+            messages=[ 
                 {"role": m["role"], "content": m["content"]}
                 for m in st.session_state.messages
             ],
